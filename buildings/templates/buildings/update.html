@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify, {{ building.name }} | Buildings App</title>
+    <link rel="stylesheet" href="{% static 'buildings/style.css' %}">
+</head>
+<body>
+<header><h3>Buildings App | Antonin Suzor</h3></header>
+
+<main>
+<h1>Modify {{ building.name }}</h1>
+<p>
+    You may wish to:
+    <a href="{% url 'buildings:create' %}">Create a new building</a>,
+    <a href="{% url 'buildings:read' building.pk %}">Read details on this building</a>,
+    <a href="{% url 'buildings:delete' building.pk %}">Delete this building</a>.
+</p>
+
+<!-- 'form.as_p' generates a form based on the UpdateView that calls the template -->
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
+
+<p>
+    <a href="{% url 'buildings:sort-by-name' %}">Back to list of buildings</a><br>
+    <a href="{% url 'buildings:create' %}">Create a new building</a>
+</p>
+</main>
+</body>
+</html>

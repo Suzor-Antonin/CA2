@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SortBy, Pk | Buildings App</title>
+    <link rel="stylesheet" href="{% static 'buildings/style.css' %}">
+</head>
+<body>
+<header><h3>Buildings App | Antonin Suzor</h3></header>
+
+<main>
+<h1>List of registered buildings, sorted by their primary key in the database.</h1>
+<p>
+    You may wish to sort them by :
+    <a href="{% url 'buildings:sort-by-name' %}">Name</a> or by :
+    <a href="{% url 'buildings:sort-by-name' %}">Address</a>
+</p>
+
+{% if building_list %}
+    <ul>
+    {% for building in building_list %}
+        <li><a href="{% url 'buildings:read' building.pk %}" target="_blank">{{ building.name }}</a> -- {{ building.get_address2 }}</li><br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No buildings registered yet.</p>
+{% endif %}
+
+<p>
+    <a href="{% url 'buildings:home' %}">Back to home page</a><br>
+    <a href="{% url 'buildings:create' %}">Create a new building</a>
+</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details, {{ building.name }} | Buildings App</title>
+    <link rel="stylesheet" href="{% static 'buildings/style.css' %}">
+</head>
+<body>
+<header><h3>Buildings App | Antonin Suzor</h3></header>
+
+<main>
+<h1>Details on {{ building.name }}</h1>
+<p>
+    You may wish to:
+    <a href="{% url 'buildings:create' %}">Create a new building</a>,
+    <a href="{% url 'buildings:update' building.pk %}">Modify this building</a>,
+    <a href="{% url 'buildings:delete' building.pk %}">Delete this building</a>.
+</p>
+
+<p>
+    This building is situated at {{ building.get_address1 }}.<br>
+    Its signature color is {{ building.color }}, and it spans {{ building.floors }} floors.<br>
+    <!-- the if statement allows smooth display of the 'residential' attribute -->
+    It is {% if not building.residential %} not {% endif %} a residential building.<br>
+    Its primary key in the database is {{ building.pk }}.
+</p>
+
+<p>
+    <a href="{% url 'buildings:sort-by-name' %}">Back to list of buildings</a><br>
+    <a href="{% url 'buildings:create' %}">Create a new building</a>
+</p>
+</main>
+</body>
+</html>

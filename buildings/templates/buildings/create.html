@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New | Buildings App</title>
+    <link rel="stylesheet" href="{% static 'buildings/style.css' %}">
+</head>
+<body>
+<header><h3>Buildings App | Antonin Suzor</h3></header>
+
+<main>
+<h1>Create a new building</h1>
+
+<!-- 'form.as_p' generates a form based on the CreateView that calls the template -->
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+
+<p>
+    <a href="{% url 'buildings:sort-by-name' %}">Back to list of buildings</a><br>
+    <a href="{% url 'buildings:home' %}">Back to home page</a>
+</p>
+</main>
+</body>
+</html>

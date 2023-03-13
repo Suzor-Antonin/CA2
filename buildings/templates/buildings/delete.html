@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete, {{ building.name }} | Buildings App</title>
+    <link rel="stylesheet" href="{% static 'buildings/style.css' %}">
+</head>
+<body>
+<header><h3>Buildings App | Antonin Suzor</h3></header>
+
+<main>
+<h1>Delete {{ building.name }}</h1>
+<p>
+    You may wish to:
+    <a href="{% url 'buildings:create' %}">Create a new building</a>,
+    <a href="{% url 'buildings:read' building.pk %}">Read details on this building</a>,
+    <a href="{% url 'buildings:update' building.pk %}">Modify this building</a>.
+</p>
+
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ building }}"?</p>
+    {{ form }}
+    <input type="submit" value="Delete">
+</form>
+
+<p>
+    <a href="{% url 'buildings:sort-by-name' %}">Back to list of buildings</a><br>
+    <a href="{% url 'buildings:create' %}">Create a new building</a>
+</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Buildings App</title>
+    <link rel="stylesheet" href="{% static 'buildings/style.css' %}">
+</head>
+<body>
+<header><h3>Buildings App | Antonin Suzor</h3></header>
+
+<main>
+<h1>Welcome to the <i>Buildings</i> App.</h1>
+
+<p>
+    This little database stores information about buildings.<br>
+    In this version, you will be able to Create, Read, Update, and Delete buildings.<br>
+    To start, please go to the
+    <a href="{% url 'buildings:sort-by-name' %}">List of buildings</a> or
+    <a href="{% url 'buildings:create' %}">Create a new building</a>.
+</p>
+</main>
+</body>
+</html>

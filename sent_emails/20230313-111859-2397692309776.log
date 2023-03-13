@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: antonin@suzor.net
+Date: Mon, 13 Mar 2023 11:18:59 -0000
+Message-ID: 
+ <167870633953.16996.5647686268114381305@DESKTOP-69UI2I0.customer.ask4.lan>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/Mw/bkzzfn-f5100ea7b0bde42465efdcc8cd4b849f/
+
+Your username, in case you’ve forgotten: antonin
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
