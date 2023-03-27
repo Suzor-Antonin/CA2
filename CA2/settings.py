@@ -13,6 +13,22 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from django.urls import reverse
 from pathlib import Path
 
+# Fetch environment variables based on 'production' mode or 'development' mode
+envVarMode = 'development'
+if envVarMode == 'development':
+    envVarFile = open('envVarDev.txt', 'r')
+    for line in envVarFile.readlines():
+        exec(line)
+    envVarFile.close()
+elif envVarMode == 'production':
+    envVarFile = open('envVarProd.txt', 'r')
+    for line in envVarFile.readlines():
+        exec(line)
+    envVarFile.close()
+else:
+    raise ValueError('settings.py: `envVarMode` is misconfigured.')
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,9 +40,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q(=^92_w5n=4diqi7jwt2gn)-o&sblbt^#8cwp#vrsezu^jj$l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True # Taken care of with `envVarMode`.
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = [] # Taken care of with `envVarMode`.
 
 
 # Application definition

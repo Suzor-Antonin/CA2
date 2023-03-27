@@ -29,7 +29,7 @@ class SortNameView(ListView):
         return Building.objects.order_by('name')
 
 
-class SortAdressView(ListView):
+class SortAddressView(ListView):
     template_name = 'buildings/sort-by-address.html'
 
     def get_queryset(self):
@@ -65,7 +65,7 @@ class DetailBuildingView(DetailView):
 class ModifyBuildingView(UpdateView):
     template_name = 'buildings/update.html'
     model = Building
-    # the 'fields' attribute says which field to display in which order
+    # the 'fields' attribute tells which field to display in which order
     fields = [
         'name',
         'country',
@@ -76,6 +76,10 @@ class ModifyBuildingView(UpdateView):
         'color',
         'residential',
     ]
+
+    # Django manages this by default
+    # def get_success_url(self):
+    #     return self.object.get_absolute_url()
 
 
 class DeleteBuildingView(DeleteView):
